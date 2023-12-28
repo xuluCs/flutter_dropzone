@@ -49,13 +49,12 @@ class FlutterDropzone {
         var item = event.dataTransfer.items[i];
         switch (item.kind) {
           case "file":
-            if (this.dropMIME == null || this.dropMIME.includes(item.type)) {
-              var file = item.getAsFile();
-              if (this.onDrop != null) this.onDrop(event, file);
-              files.push(file);
-            }
-            else {
-              if (this.onDropInvalid != null) this.onDropInvalid(event, item.type);
+            if (!this.dropMIME || (Array.isArray(this.dropMIME) && (this.dropMIME.length === 0 || this.dropMIME.includes?.(item.type)))) {
+                var file = item.getAsFile();
+                if (this.onDrop != null) this.onDrop(event, file);
+                files.push(file);
+            } else {
+                if (this.onDropInvalid != null) this.onDropInvalid(event, item.type);
             }
             break;
 

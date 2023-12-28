@@ -1,4 +1,4 @@
-See the README files of the individual subprojects:
+# See the README files of the individual subprojects
 
 * The [main implementation][1] of `flutter_dropzone`.
 * The [platform interface][2] of `flutter_dropzone`.
